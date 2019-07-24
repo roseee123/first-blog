@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Article } from '../article';
-import { from } from 'rxjs';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-article-detail',
@@ -11,9 +13,19 @@ import { from } from 'rxjs';
 export class ArticleDetailComponent implements OnInit {
   @Input() article: Article;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private articleService: ArticleService,
+    private location: Location
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.articleService.getArticle(id).subscribe( article => this.article = article);
+  }
+
+  goBack(): void {
+    this.location.back();  //回到上一頁
   }
 
 }

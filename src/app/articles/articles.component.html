@@ -1,8 +1,8 @@
 <h2>My Blogs</h2>
 <ul class="articles">
-  <li *ngFor="let article of articles" [class.selected]="article === selectedArticle" (click)="onSelect(article)">
-    <span class="badge">{{ article.id }}</span> {{ article.title }}
+  <li *ngFor="let article of articles">
+    <a routerLink="/detail/{{ article.id }}">
+      <span class="badge">{{ article.id }}</span> {{ article.title }}
+    </a>
   </li>
 </ul>
-
-<app-article-detail [article]="selectedArticle"></app-article-detail>

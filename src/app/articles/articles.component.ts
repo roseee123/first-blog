@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Article } from '../article';
-import { ARTICLES } from '../mock-articles';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-articles',
@@ -9,16 +9,17 @@ import { ARTICLES } from '../mock-articles';
   styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
-  articles = ARTICLES;
-  selectedArticle: Article;
+  articles: Article[];
 
-  constructor() { }
+
+  constructor(private articleService: ArticleService) { }
 
   ngOnInit() {
+    this.getArticles();
   }
 
-  onSelect(article: Article): void {
-    this.selectedArticle = article;
+  getArticles(): void {
+    this.articleService.getArticles().subscribe(articles => this.articles = articles);
   }
 
 }
