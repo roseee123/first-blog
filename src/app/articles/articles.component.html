@@ -1,4 +1,15 @@
 <h2>My Blogs</h2>
+<div>
+  <label>Article title:
+    <input #articleTitle />
+  </label>
+  <label>Article content:
+    <input #articleContent />
+  </label>
+  <button (click)="add(articleTitle.value, articleContent.value); articleTitle.value=''; articleContent.value=''">
+    Add
+  </button>
+</div>
 <ul class="articles">
   <li *ngFor="let article of articles">
     <a routerLink="/detail/{{ article.id }}">
