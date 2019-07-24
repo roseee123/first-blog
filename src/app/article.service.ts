@@ -9,6 +9,9 @@ import { Observable, of, from } from 'rxjs';
 })
 export class ArticleService {
   private articlesUrl = 'api/article';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient
@@ -22,4 +25,9 @@ export class ArticleService {
     const url = `${this.articlesUrl}/${id}`;
     return this.http.get<Article>(url);
   }
+
+  updateArticle(article: Article): Observable<any> {
+    return this.http.put(this.articlesUrl, article, this.httpOptions);
+  }
+
 }

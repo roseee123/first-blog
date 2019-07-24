@@ -28,4 +28,9 @@ export class ArticleDetailComponent implements OnInit {
     this.location.back();  //回到上一頁
   }
 
+  save(): void {
+    this.articleService.updateArticle(this.article)
+    .subscribe(() => this.goBack());
+  }
+
 }
