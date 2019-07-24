@@ -1,0 +1,15 @@
+<div *ngIf="article">
+    <h2>{{ article.title | uppercase }} Details</h2>
+    <div><span>id: </span>{{ article.id }}</div>
+    <div>
+      <label>title:
+        <input [(ngModel)]="article.title" placeholder="title"/>
+      </label>
+    </div>
+    <div>
+      <label>content:
+        <input [(ngModel)]="article.content" placeholder="content"/>
+      </label>
+    </div>
+
+  </div>
