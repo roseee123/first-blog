@@ -29,6 +29,7 @@ export class ArticlesComponent implements OnInit {
     // paper1.id = 8;
     paper1.title = title.trim();
     paper1.content = content.trim();
+    paper1.date = new Date();
     // console.log(JSON.stringify(paper1));
     if (!title || !content) { return; }
     this.articleService.addArticle(paper1)
