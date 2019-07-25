@@ -30,8 +30,8 @@ export class ArticleService {
     return this.http.put(this.articlesUrl, article, this.httpOptions);
   }
 
-  addArticle(article: Article, content: Article): Observable<any> {
-    return this.http.post(this.articlesUrl, article, this.httpOptions);
+  addArticle(article: Article): Observable<Article> {
+    return this.http.post<Article>(this.articlesUrl, article, this.httpOptions);
   }
 
 }
