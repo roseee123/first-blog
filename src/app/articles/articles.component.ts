@@ -36,4 +36,9 @@ export class ArticlesComponent implements OnInit {
     });
   }
 
+  delete(article: Article): void {
+    this.articles = this.articles.filter(h => h !== article);
+    this.articleService.deleteArticle(article).subscribe();
+  }
+
 }
